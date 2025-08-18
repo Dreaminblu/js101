@@ -1,0 +1,11 @@
+{
+  "welcome": "Welcome to the Car Loan Calculator!",
+  "loan_amount": "Please enter the loan amount for the car:",
+  "apr": "Please enter the annual percentage rate (APR) for your loan:\n  (Example: 7 for 7% or 3.5 for 2.5%)",
+  "loan_duration": "Please enter the loan duration in months:",
+  "invalid_number": "Invalid number. Please try again!",
+  "result": "The result is",
+  "another_operation": "Would you like to perform another calculation?\n  (Yes / No)",
+  "invalid_choice": "Invalid Choice. Please enter Yes or No.",
+  "bye": "Thank you for using the Car Loan Calculator!"
+}
