@@ -10,6 +10,11 @@
 // monthly interest rate(APR/12)
 // loan duration in months
 
+// feedback
+// allow 0% apr
+// disallow loan amount that aren't int or float(2 decimal points)
+// allow just y or n to answer questions
+
 // Setup
 const readline = require("readline-sync");
 const messages = require("./messages.json");
@@ -19,38 +24,59 @@ function prompt(message) {
 }
 
 // Invalid number checker
-function invalidNumber(num) {
-  return num.trim() === "" || Number.isNaN(Number(num)) || Number(num) <= 0;
-};
+function invalidNumber(num, { isZero = false, isLoanChecked = false } = {}) {
+  if (num.trim() === "") {return true;}
+
+  const value = Number(num);
+  if (Number.isNaN(value)) {return true;}
+
+  if (isLoanChecked) {
+    if (!Number.isInteger(value * 100)) {return true;}
+  }
+
+  if (isZero) {
+    return value < 0;
+  } else {
+    return value <= 0;
+  }
+}
 
 // Get input
-function getInput(message) {
+function getInput(message, options = {}) {
+  const { isZero = false, isLoanChecked = false } = options;
+
   prompt(message);
   let input = readline.question();
 
-  while (invalidNumber(input)) {
-    prompt(messages.invalid_number);
+  while (invalidNumber(input, { isZero, isLoanChecked })) {
+    const msg = isLoanChecked ? messages.invalid_loan : messages.invalid_num;
+    prompt(msg);
     input = readline.question();
   }
+
   return Number(input);
-};
+}
 
 // Calculate
 function calculateMonthlyPayment(loanAmount, apr, months) {
   let monthlyRate = (apr / 100) / 12;
 
-  return loanAmount * (monthlyRate / (1 - Math.pow(1 + monthlyRate, -months)));
-};
+  if (monthlyRate === 0) {
+    return loanAmount / months;
+  }
 
-// Car loan Calculator prompts for the following: (loan amount, apr, loan duration (months))
+  return loanAmount * (monthlyRate / (1 - Math.pow(1 + monthlyRate, -months)));
+}
+
+// Car loan Calculator: (loan amount, apr, loan duration (months))
 function carLoanCalculator() {
+  console.clear();
   prompt(messages.welcome);
+  console.log("\n-----------------------------------------------\n");
 
   while (true) {
-    console.log("\n-----------------------------------------------\n");
-
-    let loanAmount = getInput(messages.loan_amount);
-    let apr = getInput(messages.apr);
+    let loanAmount = getInput(messages.loan_amount, { isLoanChecked: true });
+    let apr = getInput(messages.apr, { isZero: true });
     let loanDuration = getInput(messages.loan_duration);
 
     let monthlyPayment = calculateMonthlyPayment(loanAmount, apr, loanDuration);
@@ -60,19 +86,18 @@ function carLoanCalculator() {
     prompt(messages.another_operation);
     let answer = readline.question().toLowerCase();
 
-    while (answer !== "yes" && answer !== "no") {
+    while (!["y", "yes", "n", "no"].includes(answer)) {
       prompt(messages.invalid_choice);
       answer = readline.question().toLowerCase();
     }
 
-    if (answer === "no") {
+    if (answer === "n" || answer === "no") {
       prompt(messages.bye);
       break;
     }
+
+    console.clear();
   }
 }
 
 carLoanCalculator();
-
-
-
