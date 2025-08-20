@@ -59,6 +59,7 @@ function calculate(num1, num2, operation) {
 
 function runCalculator() {
   const messages = chooseLanguage();
+  console.clear();
   prompt(messages.welcome);
 
   while (true) {
@@ -81,6 +82,7 @@ function runCalculator() {
       prompt(messages.bye);
       break;
     }
+    console.clear();
   }
 }
 
