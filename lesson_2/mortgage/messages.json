@@ -1,0 +1,12 @@
+{
+  "welcome": "Welcome to the Car Loan Calculator!",
+  "loan_amount": "Please enter the loan amount for the car:\n(Example: 500000 for $500,000 or 800000.87 for $800,000.87)",
+  "apr": "Please enter the annual percentage rate (APR) for your loan:\n(Example: 7 for 7% or 3.5 for 3.5%)",
+  "loan_duration": "Please enter the loan duration in months:",
+  "invalid_num": "Invalid number. Please try again!",
+  "invalid_loan": "Invalid number. Please use a whole number or up to two decimals.",
+  "result": "The result is",
+  "another_operation": "Would you like to perform another calculation?\n(Yes / No)",
+  "invalid_choice": "Invalid choice. Please enter Yes or No.",
+  "bye": "Thank you for using the Car Loan Calculator!"
+}
