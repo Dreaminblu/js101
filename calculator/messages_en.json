@@ -1,0 +1,12 @@
+{
+  "invalid_choice": "Invalid Choice. Please choose 1 or 2.",
+  "welcome": "Welcome to Calculator!",
+  "first_number": "What is the first number?",
+  "second_number": "What is the second number?",
+  "invalid_number": "Hmmm...that doesn't look like a valid number.",
+  "operation": "What operation would you like to perform?\n1) Add 2) Subtract 3) Multiply 4) Divide",
+  "must_choose": "Must choose 1, 2, 3, or 4.",
+  "result": "The result is",
+  "another_operation": "Would you like to start a new operation?\n1) Yes 2) No",
+  "bye": "Bye bye!"
+}
