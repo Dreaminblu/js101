@@ -1,0 +1,21 @@
+
+/*
+Question:
+(restate question in own word if applicable)
+
+
+Examples:
+(given one, make some of your own to clarify understanding of question)
+
+
+Function call:
+(At the bottom so we can easily change the implementation by just modifying the function. i.e. console.log(doSomething()))
+
+
+Pseudocode:
+(English of your logic, not code!)
+
+
+Now code! Refer to the pseudocode!
+
+*/
