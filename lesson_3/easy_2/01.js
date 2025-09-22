@@ -53,5 +53,4 @@ function replaceWithUrgent(str) {
   return words.join(" ");  
 }
 
-
 console.log(replaceWithUrgent(advice));
